@@ -1,0 +1,44 @@
+﻿@model ClientDetails.Models.ClientDetailsViewModel
+
+<h2>Analytics</h2>
+
+<h3>Number of Users per Location</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Location</th>
+            <th>User Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var locationMetric in Model.UsersPerLocation)
+        {
+            <tr>
+                <td>@locationMetric.Key</td>
+                <td>@locationMetric.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Total Number of Users</h3>
+<p>@Model.TotalUsers</p>
+
+<h3>Number of Clients Created Per Date</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Client Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var clientMetric in Model.ClientsPerDate)
+        {
+            <tr>
+                <td>@clientMetric.Key.ToShortDateString()</td>
+                <td>@clientMetric.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
